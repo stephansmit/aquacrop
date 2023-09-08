@@ -1,5 +1,6 @@
 from subprocess import call
 from tqdm import tqdm
+import sys
 
 modules_to_compile = [
     "aquacrop.solution.water_stress",
@@ -24,4 +25,4 @@ modules_to_compile = [
     "aquacrop.solution.biomass_accumulation"]
 
 for mod in tqdm(modules_to_compile):
-    call(["python", "-m", mod])
+    call([sys.executable, "-m", mod])
