@@ -25,7 +25,7 @@ def irrigation(
     IrrMngt_IrrMethod: int,
     IrrMngt_SMT: float,
     IrrMngt_AppEff: float,
-    IrrMngt_MaxIrr: float,
+    IrrMngt_MaxIrr: "ndarray",
     IrrMngt_IrrInterval: int,
     IrrMngt_Schedule: "ndarray",
     IrrMngt_depth: float,
@@ -167,6 +167,7 @@ def irrigation(
 
             Dr = NewCond_Depletion / NewCond_TAW
             index = int(NewCond_GrowthStage) - 1
+            idx = NewCond_TimeStepCounter
 
             if Dr > 1 - IrrMngt_SMT[index] / 100:
                 # Irrigation occurs
@@ -175,7 +176,7 @@ def irrigation(
                 EffAdj = ((100 - IrrMngt_AppEff) + 100) / 100
                 IrrReq = IrrReq * EffAdj
                 # Limit irrigation to maximum depth
-                Irr = min(IrrMngt_MaxIrr, IrrReq)
+                Irr = min(IrrMngt_MaxIrr[idx], IrrReq)
             else:
                 Irr = 0
 

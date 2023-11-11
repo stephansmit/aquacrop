@@ -68,7 +68,9 @@ def read_irrigation_management(
 
         IrrMngt.Schedule = np.zeros(len(ClockStruct.time_span))
 
+
     IrrMngt.SMT = np.array(IrrMngt.SMT, dtype=float)
+    IrrMngt.MaxIrr = np.array(IrrMngt.MaxIrr, dtype=float)
 
     irr_mngt_struct = IrrMngtStruct(len(ClockStruct.time_span))
     for a, v in IrrMngt.__dict__.items():

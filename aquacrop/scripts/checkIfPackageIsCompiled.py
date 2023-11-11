@@ -1,5 +1,5 @@
 from subprocess import call
-
+import sys
 
 def compile_all_AOT_files():
     """
@@ -35,4 +35,4 @@ def compile_all_AOT_files():
         print(
             " Note: The compilation is only necessary the first time that the library is used."
         )
-        call(["python", "-m", "aquacrop.scripts.initiate_library"])
+        call([sys.executable, "-m", "aquacrop.scripts.initiate_library"])

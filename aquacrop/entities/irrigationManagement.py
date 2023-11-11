@@ -87,7 +87,7 @@ spec = [
     ("irrigation_method", int64),
     ("WetSurf", float64),
     ("AppEff", float64),
-    ("MaxIrr", float64),
+    ("MaxIrr", float64[:]),
     ("MaxIrrSeason", float64),
     ("SMT", float64[:]),
     ("IrrInterval", int64),
@@ -110,7 +110,7 @@ class IrrMngtStruct:
 
         self.WetSurf = 100.0
         self.AppEff = 100.0
-        self.MaxIrr = 25.0
+        self.MaxIrr = 25.0 * np.ones(sim_len)
         self.MaxIrrSeason = 10_000
         self.SMT = np.zeros(4)
         self.IrrInterval = 0
