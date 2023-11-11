@@ -58,7 +58,10 @@ class TestIrrigation(unittest.TestCase):
         """
         Threshold methodology
         """
-        irrigation = IrrigationManagement(irrigation_method=1, SMT=[40, 60, 70, 30] * 4)
+        date_range = pd.date_range(self._sim_start, self._sim_end)
+        irrigation = IrrigationManagement(irrigation_method=1, 
+                                          SMT=[40, 60, 70, 30] * 4,
+                                          MaxIrr=[25]*len(date_range))
 
         model_os = AquaCropModel(
             sim_start_time=self._sim_start,
